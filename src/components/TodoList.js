@@ -5,7 +5,7 @@ function TodoList() {
     const items = useSelector((state)=>state.todos.items)
         console.log(items)
     const dispatch = useDispatch();
-
+    // dispatch'i kullanarak todosSlice dosyasında ki actionları burada çalıştırıyoruz.
     return (
     <>
         <ul className='todo-list'>
@@ -13,6 +13,7 @@ function TodoList() {
                 <li className={item.completed ? 'completed' : ''}>
                     <div className='view'>
                         <input 
+                        // 
                             checked={item.completed} 
                             onChange={()=>dispatch(toggle({id: item.id}))} 
                             className='toggle' 

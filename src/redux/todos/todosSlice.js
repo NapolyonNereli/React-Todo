@@ -4,6 +4,7 @@ export const todosSlice = createSlice({
     name: 'todos',
     initialState: {
         items: [   
+            // ekrana default olarak gelen todo itemlar
             {
                 id: "1",
                 title: "DenemeTitle",
@@ -54,15 +55,13 @@ export default todosSlice.reducer;
 
 
 //----------------------------------------- TOGGLE ACTION'U
-//         Bu kod, bir toggle işlevini temsil eder. İşlev, bir öğenin tamamlanmış durumunu tersine çevirir.
-
-//         İşlev iki argüman alır: "state" ve "action". "state" argümanı, Redux store'unun mevcut durumunu temsil eder. "action" argümanı ise, hangi eylemin gerçekleştirildiğini ve eylemin hangi verileri taşıdığını belirtir.
-
-//         Fonksiyonun içinde, "action.payload" üzerinden "id" değişkeni çıkarılır. Bu "id", tamamlanması istenen öğenin kimliğini temsil eder.
-
-//         Daha sonra, "id" değeri kullanılarak, "state" nesnesinin içindeki "items" listesindeki öğe bulunur. Bu öğe, daha sonra "completed" özelliği ters çevrilerek işaretlenir.
-
-//         Sonuç olarak, bu işlev Redux store'unda bulunan bir öğenin tamamlanmış durumunu tersine çevirir.
+//Bu kod, bir toggle işlevini temsil eder. İşlev, bir öğenin tamamlanmış durumunu tersine çevirir.
+//İşlev iki argüman alır: "state" ve "action". "state" argümanı, Redux store'unun mevcut durumunu temsil eder.
+//"action" argümanı ise, hangi eylemin gerçekleştirildiğini ve eylemin hangi verileri taşıdığını belirtir.
+//Fonksiyonun içinde, "action.payload" üzerinden "id" değişkeni çıkarılır. Bu "id", tamamlanması istenen öğenin kimliğini temsil eder.
+//Daha sonra, "id" değeri kullanılarak, "state" nesnesinin içindeki "items" listesindeki öğe bulunur.
+//Bu öğe, daha sonra "completed" özelliği ters çevrilerek işaretlenir.
+//Sonuç olarak, bu işlev Redux store'unda bulunan bir öğenin tamamlanmış durumunu tersine çevirir.
     
 
 
@@ -73,8 +72,10 @@ export default todosSlice.reducer;
 
 
 //-----------------PAYLOAD NEDİR--------------------------
-// Redux eylemleri, genellikle iki özellik içerir: "type" ve "payload". "Type", eylemin türünü belirtirken, "payload" ise eylemin taşıdığı verileri belirtir.
-
-// Yani, "payload", Redux eyleminin taşıdığı verileri ifade eder. Bu veriler, eylemin işlevini gerçekleştirmek için kullanılır. Örneğin, bir todo öğesinin tamamlanmış durumunu değiştirmek için kullanılan bir Redux eylemi, "toggle" olabilir ve bu eylem, "payload" özelliği aracılığıyla, ilgili todo öğesinin kimliğini (id) taşıyabilir.
-
-// Bu nedenle, "const id = action.payload" ifadesi, Redux eyleminin taşıdığı verilerden "id" özelliğini alır ve bir değişkene atar. Böylece, Redux store'da ilgili todo öğesinin kimliğini belirlemek için kullanılabilir.
+// Redux eylemleri, genellikle iki özellik içerir: "type" ve "payload".
+// "Type", eylemin türünü belirtirken, "payload" ise eylemin taşıdığı verileri belirtir.
+// Yani, "payload", Redux eyleminin taşıdığı verileri ifade eder. Bu veriler, eylemin işlevini gerçekleştirmek için kullanılır.
+// Örneğin, bir todo öğesinin tamamlanmış durumunu değiştirmek için kullanılan bir Redux eylemi,
+// "toggle" olabilir ve bu eylem, "payload" özelliği aracılığıyla, ilgili todo öğesinin kimliğini (id) taşıyabilir.
+// Bu nedenle, "const id = action.payload" ifadesi, Redux eyleminin taşıdığı verilerden "id" özelliğini alır ve bir değişkene atar.
+// Böylece, Redux store'da ilgili todo öğesinin kimliğini belirlemek için kullanılabilir.
