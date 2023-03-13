@@ -18,25 +18,21 @@ export const todosSlice = createSlice({
     },
     reducers: {
         // input için bir tanım
+
+
+        // yeni bir todo item ekler.
         addTodo: (state, action) => {
             state.items.push(action.payload)
         },
+        // todo item'ın yanında ki tiki işaretler ve yazının üzerini çizmeye yarayan action
         toggle: (state, action) => {
             const {id} = action.payload;
 
             const item = state.items.find(item => item.id === id)
             item.completed = !item.completed;
         },
-//         Bu kod, bir toggle işlevini temsil eder. İşlev, bir öğenin tamamlanmış durumunu tersine çevirir.
 
-//         İşlev iki argüman alır: "state" ve "action". "state" argümanı, Redux store'unun mevcut durumunu temsil eder. "action" argümanı ise, hangi eylemin gerçekleştirildiğini ve eylemin hangi verileri taşıdığını belirtir.
-
-//         Fonksiyonun içinde, "action.payload" üzerinden "id" değişkeni çıkarılır. Bu "id", tamamlanması istenen öğenin kimliğini temsil eder.
-
-//         Daha sonra, "id" değeri kullanılarak, "state" nesnesinin içindeki "items" listesindeki öğe bulunur. Bu öğe, daha sonra "completed" özelliği ters çevrilerek işaretlenir.
-
-//         Sonuç olarak, bu işlev Redux store'unda bulunan bir öğenin tamamlanmış durumunu tersine çevirir.
-    
+        // x buttonuna basıldığında o elemanın silinmesine yarıyor.
         destroy: (state, action) => {
             const id = action.payload;
             const filtred = state.items.filter((item) => item.id !== id)
@@ -54,6 +50,25 @@ export default todosSlice.reducer;
 // Slice, şu anda herhangi bir eylem oluşturucu fonksiyon içermiyor (reducers alanı boş).
 // Bu nedenle, bu kod sadece todos adlı bir slice oluşturuyor, ancak özellikle bir işlevsellik sağlamıyor.
 // todos slice'ı, daha sonra store oluşturulurken reducer argümanı olarak kullanılabilir.
+
+
+
+//----------------------------------------- TOGGLE ACTION'U
+//         Bu kod, bir toggle işlevini temsil eder. İşlev, bir öğenin tamamlanmış durumunu tersine çevirir.
+
+//         İşlev iki argüman alır: "state" ve "action". "state" argümanı, Redux store'unun mevcut durumunu temsil eder. "action" argümanı ise, hangi eylemin gerçekleştirildiğini ve eylemin hangi verileri taşıdığını belirtir.
+
+//         Fonksiyonun içinde, "action.payload" üzerinden "id" değişkeni çıkarılır. Bu "id", tamamlanması istenen öğenin kimliğini temsil eder.
+
+//         Daha sonra, "id" değeri kullanılarak, "state" nesnesinin içindeki "items" listesindeki öğe bulunur. Bu öğe, daha sonra "completed" özelliği ters çevrilerek işaretlenir.
+
+//         Sonuç olarak, bu işlev Redux store'unda bulunan bir öğenin tamamlanmış durumunu tersine çevirir.
+    
+
+
+
+
+
 
 
 
