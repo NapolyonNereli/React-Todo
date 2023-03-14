@@ -1,11 +1,23 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {destroy, toggle} from "../redux/todos/todosSlice"
+import {destroy, selectTodos, toggle} from "../redux/todos/todosSlice"
+let filtred = [];
 function TodoList() {
-    const items = useSelector((state)=>state.todos.items)
-        console.log(items)
+    // selector'u burada kullandık
+    const items = useSelector(selectTodos)
     const dispatch = useDispatch();
     // dispatch'i kullanarak todosSlice dosyasında ki actionları burada çalıştırıyoruz.
+    const activeFilter = useSelector((state) => state.todos.activeFilter)
+    filtred = items;
+    if (activeFilter !== 'all') {
+        filtred = items.filter((todo) =>
+            activeFilter === 'active'
+            ? todo.completed === false && todo
+            : todo.completed === true && todo,
+        );
+    }
+
+    
     return (
     <>
         <ul className='todo-list'>
@@ -13,7 +25,7 @@ function TodoList() {
                 <li className={item.completed ? 'completed' : ''}>
                     <div className='view'>
                         <input 
-                        // 
+                        // dipathc ile toggle'a ulaşıp item.id sine göre işaretleme yaptık
                             checked={item.completed} 
                             onChange={()=>dispatch(toggle({id: item.id}))} 
                             className='toggle' 

@@ -1,4 +1,3 @@
-import { nanoid } from '@reduxjs/toolkit';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {addTodo} from "../redux/todos/todosSlice" 
@@ -9,9 +8,10 @@ function Form() {
   const [title, setTitle] = useState('');
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
+    if (!title) return; // boş input değeri girmemesine yarıyor.
     e.preventDefault(); // submit olayında ekranın yenilenmesini engeller.
     setTitle("") // submit olduğunda input boşa geçmiş oluyor.
-    dispatch(addTodo({id: nanoid(), title, completed: false}))
+    dispatch(addTodo({ title })) //prapare kullandık burda'da
   }
   return (
     <form onSubmit={handleSubmit}>

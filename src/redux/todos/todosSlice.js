@@ -1,4 +1,4 @@
-import  {createSlice} from "@reduxjs/toolkit"
+import  {createSlice, nanoid} from "@reduxjs/toolkit"
 
 export const todosSlice = createSlice({
     name: 'todos',
@@ -7,12 +7,12 @@ export const todosSlice = createSlice({
             // ekrana default olarak gelen todo itemlar
             {
                 id: "1",
-                title: "DenemeTitle",
+                title: "Örnek Todo",
                 completed: true,
             },
             {
                 id: "2",
-                title:"DenemeTitle2",
+                title:"Örnek Todo 2",
                 completed: false,
             }
         ]
@@ -22,8 +22,19 @@ export const todosSlice = createSlice({
 
 
         // yeni bir todo item ekler.
-        addTodo: (state, action) => {
-            state.items.push(action.payload)
+        addTodo: {
+            reducer: (state, action) => {
+                state.items.push(action.payload)
+            },
+            prepare: ({ title }) => {
+                return {
+                    payload: {
+                        id: nanoid,
+                        completed: false,
+                        title,
+                    }
+                }
+            } 
         },
         // todo item'ın yanında ki tiki işaretler ve yazının üzerini çizmeye yarayan action
         toggle: (state, action) => {
@@ -38,12 +49,17 @@ export const todosSlice = createSlice({
             const id = action.payload;
             const filtred = state.items.filter((item) => item.id !== id)
             state.items = filtred;
+        },
+        changeActiveFilter: (state, action) => {
+            state.activeFilter = action.payload;
         }
-
     }
 })
 
-export const {addTodo, toggle, destroy} = todosSlice.actions;
+//kod tekrarını en aza çeker selectedlar
+export const selectTodos = (state) => state.todos.items; 
+
+export const {addTodo, toggle, destroy, changeActiveFilter} = todosSlice.actions;
 export default todosSlice.reducer;
 
 // Bu kod, Redux Toolkit kullanarak bir todos adlı Redux Slice oluşturuyor.
