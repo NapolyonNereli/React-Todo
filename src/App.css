@@ -5,6 +5,14 @@ body {
 	padding: 0;
 }
 
+
+
+h2 {
+	font-size: large;
+	font-weight: bold;
+}
+
+
 button {
 	margin: 0;
 	padding: 0;

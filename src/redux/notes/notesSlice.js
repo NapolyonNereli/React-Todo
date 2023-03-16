@@ -4,18 +4,7 @@ export const notesSlice = createSlice({
     name: "notes",
     initialState: {
         items: [
-            {
-                id: nanoid(),
-                title: "Başlık1",
-                notes: "Içerik not alma",
-                color: "red"
-            },
-            {
-                id: nanoid(),
-                title: "Başlık2",
-                notes: "Içerik not alma2",
-                color: "blue"
-            }
+           
         ]
     },
     reducers: {
