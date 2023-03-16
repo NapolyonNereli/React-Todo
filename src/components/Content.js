@@ -1,17 +1,12 @@
 import React from 'react'
-import ContentFooter from './ContentFooter'
-import TodoList from './TodoList'
+import NotesArea from './NotesArea'
 
 function Content() {
   return (
-    <>
-        <section className='main'>
-            <input className='toggle-all' type="checkbox"/>
-            <label htmlFor='toggle-all'>Mark all as complete</label>
-            <TodoList />
-        </section>
-        <ContentFooter />
-    </>
+    <div>
+        <div style={{borderTop:"solid black 2px", marginTop:"30px"}} />
+        <NotesArea />
+    </div>
   )
 }
 

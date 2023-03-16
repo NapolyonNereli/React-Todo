@@ -1,27 +1,20 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import {addTodo} from "../redux/todos/todosSlice" 
-
-
 
 function Form() {
-  const [title, setTitle] = useState('');
-  const dispatch = useDispatch();
-  const handleSubmit = (e) => {
-    if (!title) return; // boş input değeri girmemesine yarıyor.
-    e.preventDefault(); // submit olayında ekranın yenilenmesini engeller.
-    setTitle("") // submit olduğunda input boşa geçmiş oluyor.
-    dispatch(addTodo({ title })) //prapare kullandık burda'da
-  }
+  const [words, setWords] = useState("");
+
+  // notesSelector.map((e) => {
+  //   if (e.title === words) {
+  //       console.log("eşitke: ",words.toLowerCase())
+  //   }
+  //   else {
+  //     return
+  //   }
+  // });
+   console.log(words)
   return (
-    <form onSubmit={handleSubmit}>
-        <input 
-          className='new-todo'
-          placeholder='Ne yapman gerekiyor'
-          autoFocus
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+    <form> 
+        <input value={words} onChange={(e) => setWords(words)} className='search-item' placeholder='search' />        
     </form>
   )
 }
